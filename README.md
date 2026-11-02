@@ -3,7 +3,7 @@
 
 [Versión en español](#en-español)
 
-Rootless, reversible degoogling of a Motorola One Hyper (XT2027-1) on Android 11, driven over ADB, with every state change logged together with its inverse.
+Rootless, reversible debloating and degoogling over ADB, with every state change logged together with its inverse. Developed and verified on a Motorola One Hyper (XT2027-1, Android 11).
 
 Companion technical reference for the blog series *Me divorcié de Google*. Reference only: no support, issues and pull requests are not monitored.
 
@@ -12,6 +12,7 @@ Companion technical reference for the blog series *Me divorcié de Google*. Refe
 - **Device:** Motorola One Hyper XT2027-1, retail AR software channel (`retar`), build `RPFS31.Q1-21-20-10`, Android 11 (API 30), security patch 2022-01-01.
 - **Constraints:** no root, no bootloader unlock, no flashing, no Google account at any point.
 - **Validity:** findings tagged `[observed]` were seen on that build only. Re-verify on anything else.
+- **Portability:** the method and the tools aren't specific to this phone: they use only stock `adb shell` commands (`pm`, `cmd appops`, `am`, `cmd netpolicy`, `cmd deviceidle`, `dumpsys`), no root, nothing OEM-specific. They should work on any Android phone with USB debugging, adjusted for its Android version and vendor. Android 11 is the only version tested; `[observed]` facts and `reference/` hold for this build only.
 - **Stack as used in October 2026:** NetGuard 2.337, RethinkDNS 0.5.8, SuperFreezZ 1.1, Aurora Store 4.8.4.
 
 ## Method
@@ -83,7 +84,7 @@ Copyright © 2026 Pablo G. (PeGa!). Commercial use of the CC BY-NC-SA material r
 
 ## En español
 
-Desgoogleado sin root y reversible de un Motorola One Hyper (XT2027-1) con Android 11, ejecutado por ADB, con cada cambio de estado registrado junto con su inverso.
+Debloat y desgoogleado sin root y reversibles por ADB, con cada cambio de estado registrado junto con su inverso. Desarrollado y verificado en un Motorola One Hyper (XT2027-1, Android 11).
 
 Referencia técnica de la serie *Me divorcié de Google*. Sólo referencia: sin soporte; issues y pull requests no se atienden.
 
@@ -92,6 +93,7 @@ Referencia técnica de la serie *Me divorcié de Google*. Sólo referencia: sin 
 - **Dispositivo:** Motorola One Hyper XT2027-1, canal `retar`, build `RPFS31.Q1-21-20-10`, Android 11 (API 30), parche 2022-01-01.
 - **Restricciones:** sin root, sin desbloquear el bootloader, sin flashear, sin cuenta de Google.
 - **Validez:** lo marcado `[observed]` se observó sólo en ese build. Reverificar en cualquier otro.
+- **Portabilidad:** el método y las herramientas no son específicos de este teléfono: usan sólo comandos estándar de `adb shell` (`pm`, `cmd appops`, `am`, `cmd netpolicy`, `cmd deviceidle`, `dumpsys`), sin root y sin nada propio del fabricante. Deberían funcionar en cualquier Android con depuración USB, ajustando por versión de Android y fabricante. Android 11 es la única versión probada; lo marcado `[observed]` y `reference/` valen sólo para este build.
 - **Stack a octubre de 2026:** NetGuard 2.337, RethinkDNS 0.5.8, SuperFreezZ 1.1, Aurora Store 4.8.4.
 
 ### Método
