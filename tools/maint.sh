@@ -4,7 +4,8 @@
 # Default is a dry run: it reads the device and reports what it would fix. --apply writes (and logs every fix).
 # Refuses to run without $DBL_DIR/permissions.jsonl: the policy comes from your own log, never from someone else's.
 # Requires: bash >= 4, adb, jq; phone attached and unlocked. DBL_DIR as in dbl-env.sh.
-# Device-verified (XT2027-1, 2026-11, read-only): the dry run matches the pre-port version line for line; logs untouched.
+# Device-verified (XT2027-1, 2026-11): dry run identical to the pre-port version; --apply re-applied 11 eroded buckets with log
+# entries identical in shape to the pre-port ones; both versions then report nothing to fix.
 # Desired state = the last logged `after` per package in permissions.jsonl, so nothing here needs hand-keeping:
 #   - RUN_ANY_IN_BACKGROUND / RUN_IN_BACKGROUND: re-set if the current mode differs
 #   - netpolicy restrict-background-blacklist: re-add/remove if the uid's membership differs
@@ -25,6 +26,7 @@ for a in "$@"; do case $a in --apply) DRY=0;; -n|--dry-run) DRY=1;; --sf) SF=1;;
 L=$DBL_DIR/permissions.jsonl
 [ -s "$L" ] || { echo "maint: no policy log at $L (set DBL_DIR to your debloat working dir)" >&2; exit 2; }
 [ $DRY = 1 ] && echo "maint: dry run (pass --apply to write)"
+[ $DRY = 0 ] && { _logok permissions.jsonl && _logok actions.jsonl || exit 2; }
 adb get-state >/dev/null 2>&1 || { echo "maint: no device" >&2; exit 1; }
 present=$(lp --user 0)
 inst() { grep -qx "$1" <<<"$present"; }
