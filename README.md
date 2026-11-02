@@ -1,5 +1,5 @@
 <!-- SPDX-License-Identifier: CC-BY-NC-SA-4.0 -->
-# moto-degoogle
+# moto-one-hyper-rootless-debloat
 
 [Versión en español](https://github.com/PeGa/moto-one-hyper-rootless-debloat#en-espa%C3%B1ol)
 
