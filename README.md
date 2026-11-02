@@ -22,7 +22,24 @@ Companion technical reference for the blog series *Me divorcié de Google* ([Spa
 
 Invariant: anyone with only the logs and the device can tell what changed and revert it.
 
-Outcome on this device: 228 logged package actions, 640 logged policy changes (runtime permissions, appops, standby buckets, netpolicy, deviceidle, firewall rules), 13 restores, 123 stock packages removed for user 0. The blog posts count 124; the extra one is a sideloaded, non-stock package.
+Outcome on this device at experiment close (2026-10-31): 228 logged package actions, 640 logged policy changes (runtime permissions, appops, standby buckets, netpolicy, deviceidle, firewall rules), 13 restores, 123 stock packages removed for user 0. The blog posts count 124; the extra one is a sideloaded, non-stock package.
+
+## Getting started
+
+Host: Linux with GNU coreutils, bash ≥ 4, adb, jq (tested there only). Phone with USB debugging authorized.
+
+```bash
+cd ~/work                                         # any directory outside this clone; DBL_DIR=./debloat-log
+source /path/to/moto-degoogle/tools/dbl-env.sh   # pins the device when exactly one is attached
+snap                                              # first run: snapshot + baseline (lists/baseline)
+dbl soft_uninstall <pkg> "pm install-existing --user 0 <pkg>" "reason" pm uninstall -k --user 0 <pkg>
+rb                                                # framework reboot after each batch
+snap; drift; crashes                              # re-snapshot, drift check, crash check
+allr <pkg> "reason"                               # background restriction, all levels, logged
+/path/to/moto-degoogle/tools/maint.sh             # periodic: dry run; --apply re-applies the logged policy
+```
+
+Read [`AGENTS.md`](AGENTS.md) first; to run the process with an AI agent, place it in the agent's working directory as its instructions.
 
 ## Contents
 
@@ -85,7 +102,24 @@ Referencia técnica de la serie *Me divorcié de Google*. Sólo referencia: sin 
 
 Invariante: con sólo los logs y el dispositivo, cualquiera puede saber qué cambió y revertirlo.
 
-Resultado en este dispositivo: 228 acciones de paquetes, 640 cambios de políticas registrados (permisos runtime, appops, standby buckets, netpolicy, deviceidle, reglas de firewall), 13 restauraciones, 123 paquetes de stock removidos para el usuario 0. Los posts cuentan 124; el adicional es un paquete sideloadeado, no de stock.
+Resultado en este dispositivo al cierre del experimento (2026-10-31): 228 acciones de paquetes, 640 cambios de políticas registrados (permisos runtime, appops, standby buckets, netpolicy, deviceidle, reglas de firewall), 13 restauraciones, 123 paquetes de stock removidos para el usuario 0. Los posts cuentan 124; el adicional es un paquete sideloadeado, no de stock.
+
+### Primeros pasos
+
+Host: Linux con GNU coreutils, bash ≥ 4, adb, jq (probado sólo ahí). Teléfono con depuración USB autorizada.
+
+```bash
+cd ~/work                                         # cualquier directorio fuera de este clon; DBL_DIR=./debloat-log
+source /path/to/moto-degoogle/tools/dbl-env.sh   # fija el dispositivo si hay exactamente uno conectado
+snap                                              # primera corrida: snapshot + baseline (lists/baseline)
+dbl soft_uninstall <pkg> "pm install-existing --user 0 <pkg>" "motivo" pm uninstall -k --user 0 <pkg>
+rb                                                # reinicio por framework después de cada tanda
+snap; drift; crashes                              # re-snapshot, chequeo de drift, chequeo de crashes
+allr <pkg> "motivo"                               # restricción de segundo plano en todos los niveles, registrada
+/path/to/moto-degoogle/tools/maint.sh             # periódico: dry run; --apply re-aplica la política registrada
+```
+
+Leé [`AGENTS.md`](AGENTS.md) primero; para correr el proceso con un agente de IA, ubicalo en el directorio de trabajo del agente como sus instrucciones.
 
 ### Contenido
 

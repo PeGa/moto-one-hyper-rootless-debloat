@@ -54,7 +54,7 @@ Raw state, timestamped under `snapshots/<ts>/`. Name lists are built **without**
 ```bash
 export LC_ALL=C
 S=snapshots/$(date -u +%Y%m%dT%H%M%SZ); mkdir -p "$S"
-lp() { adb shell -n pm list packages "$@" | sed 's/^package://' | sort -u; }
+lp() { adb shell -n pm list packages "$@" | sed 's/^package://' | tr -d '\r' | sort -u; }
 
 adb shell -n getprop                         > "$S/device.txt"
 lp --user 0                                  > "$S/present.txt"

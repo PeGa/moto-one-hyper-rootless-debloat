@@ -2,7 +2,7 @@
 # tools
 
 Helpers used during the debloat, ported with guards for public use. Contract: [`AGENTS.md`](../AGENTS.md).
-Requirements: bash >= 4, adb, jq; Python 3 with sqlite3 for `ng2rethink.py`; curl for `build-hosts.sh`.
+Requirements: Linux host with GNU coreutils (the only host tested), bash >= 4, adb, jq; Python 3 with sqlite3 for `ng2rethink.py`; curl for `build-hosts.sh`.
 
 **Working data lives outside this repository.** `DBL_DIR` (logs, lists, snapshots, hosts builds) defaults to `./debloat-log` under the current directory; the shell tools refuse a `DBL_DIR` inside the clone.
 

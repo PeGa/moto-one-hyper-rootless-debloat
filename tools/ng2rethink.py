@@ -3,7 +3,11 @@
 """Translate NetGuard rules (export XML) into a RethinkDNS bravedns.db (AppInfo table), written to a copy.
 Usage: ng2rethink.py <netguard_export.xml> <bravedns.db> [out.db]   (default out: <bravedns.db>.new; the input is never modified)
 Written against NetGuard 2.337 exports and RethinkDNS 0.5.8 (codes from upstream FirewallManager.kt).
-Put the edited DB back into a Rethink backup and restore it from Rethink's UI; a restore leaves the VPN stopped, start it again.
+A Rethink backup (.rbk) is a zip: bravedns.db, rethink_logs.db, shared_prefs_backup.txt, rethink_backup.txt. Workflow:
+  unzip backup.rbk -d rbk && ng2rethink.py export.xml rbk/bravedns.db rbk/new.db && mv rbk/new.db rbk/bravedns.db
+  (cd rbk && zip -q ../rules.rbk bravedns.db rethink_logs.db shared_prefs_backup.txt rethink_backup.txt)
+then restore rules.rbk from Rethink's UI; a restore leaves the VPN stopped, start it again.
+Parity: with the author's original config, the output AppInfo matched the backup actually restored, byte for byte.
 
 NetGuard semantics (whitelist_wifi/other=true): wifi/mobile key True = blocked, absent = blocked (default-deny,
 manage_system=true). screen_on-only allowances map to blocked (Rethink has no per-app screen-on rule).

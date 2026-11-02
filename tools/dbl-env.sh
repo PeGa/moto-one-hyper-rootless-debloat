@@ -8,7 +8,8 @@
 # Device is pinned at source time when exactly one is attached; the serial is never written to disk.
 # Device-verified (XT2027-1, 2026-11): lp, _rperm, snap, drift, crashes (parity with the pre-port versions on the real project).
 # dbl and the policy helpers send the same device commands as the versions used on the device; new: log-writable guard,
-# runtime permission flags in bgr. First-run paths (baseline bootstrap, missing-baseline refusal) have no real counterpart.
+# runtime permission flags in bgr. First-run paths verified on the device too (host writes only): baseline bootstrap, missing-baseline
+# refusal, unwritable-log guard (nothing sent).
 export LC_ALL=C
 _dbl_repo=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
 case ${DBL_DIR:-} in /*) ;; '') DBL_DIR=$PWD/debloat-log;; *) DBL_DIR=$PWD/$DBL_DIR;; esac
