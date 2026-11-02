@@ -1,11 +1,11 @@
 <!-- SPDX-License-Identifier: CC-BY-NC-SA-4.0 -->
 # moto-one-hyper-rootless-debloat
 
-[Versión en español](https://github.com/PeGa/moto-one-hyper-rootless-debloat#en-espa%C3%B1ol)
+([Versión en español](#en-español)).
 
 Rootless, reversible degoogling of a Motorola One Hyper (XT2027-1) on Android 11, driven over ADB, with every state change logged together with its inverse.
 
-Companion technical reference for the blog series *Me divorcié de Google* ([Spanish section below](#en-español)). Reference only: no support, issues and pull requests are not monitored.
+Companion technical reference for the blog series *Me divorcié de Google*. Reference only: no support, issues and pull requests are not monitored.
 
 ## Scope
 
