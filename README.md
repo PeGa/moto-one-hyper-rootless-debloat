@@ -32,13 +32,13 @@ Host: Linux with GNU coreutils, bash ≥ 4, adb, jq (tested there only). Phone w
 
 ```bash
 cd ~/work                                         # any directory outside this clone; DBL_DIR=./debloat-log
-source /path/to/moto-degoogle/tools/dbl-env.sh   # pins the device when exactly one is attached
+source /path/to/moto-one-hyper-rootless-debloat/tools/dbl-env.sh   # pins the device when exactly one is attached
 snap                                              # first run: snapshot + baseline (lists/baseline)
 dbl soft_uninstall <pkg> "pm install-existing --user 0 <pkg>" "reason" pm uninstall -k --user 0 <pkg>
 rb                                                # framework reboot after each batch
 snap; drift; crashes                              # re-snapshot, drift check, crash check
 allr <pkg> "reason"                               # background restriction, all levels, logged
-/path/to/moto-degoogle/tools/maint.sh             # periodic: dry run; --apply re-applies the logged policy
+/path/to/moto-one-hyper-rootless-debloat/tools/maint.sh             # periodic: dry run; --apply re-applies the logged policy
 ```
 
 Read [`AGENTS.md`](AGENTS.md) first; to run the process with an AI agent, place it in the agent's working directory as its instructions.
@@ -112,13 +112,13 @@ Host: Linux con GNU coreutils, bash ≥ 4, adb, jq (probado sólo ahí). Teléfo
 
 ```bash
 cd ~/work                                         # cualquier directorio fuera de este clon; DBL_DIR=./debloat-log
-source /path/to/moto-degoogle/tools/dbl-env.sh   # fija el dispositivo si hay exactamente uno conectado
+source /path/to/moto-one-hyper-rootless-debloat/tools/dbl-env.sh   # fija el dispositivo si hay exactamente uno conectado
 snap                                              # primera corrida: snapshot + baseline (lists/baseline)
 dbl soft_uninstall <pkg> "pm install-existing --user 0 <pkg>" "motivo" pm uninstall -k --user 0 <pkg>
 rb                                                # reinicio por framework después de cada tanda
 snap; drift; crashes                              # re-snapshot, chequeo de drift, chequeo de crashes
 allr <pkg> "motivo"                               # restricción de segundo plano en todos los niveles, registrada
-/path/to/moto-degoogle/tools/maint.sh             # periódico: dry run; --apply re-aplica la política registrada
+/path/to/moto-one-hyper-rootless-debloat/tools/maint.sh             # periódico: dry run; --apply re-aplica la política registrada
 ```
 
 Leé [`AGENTS.md`](AGENTS.md) primero; para correr el proceso con un agente de IA, ubicalo en el directorio de trabajo del agente como sus instrucciones.
