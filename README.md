@@ -68,7 +68,7 @@ Built with an AI coding agent working under `AGENTS.md`: the agent did the heavy
 | `tools/` and any other code | MIT, see [`LICENSE`](LICENSE) |
 | `AGENTS.md`, `docs/`, `reference/`, `examples/`, this README | CC BY-NC-SA 4.0, see [`LICENSE-docs`](LICENSE-docs) |
 
-Commercial use of the CC BY-NC-SA material requires prior permission from the author.
+Copyright © 2026 Pablo G. (PeGa!). Commercial use of the CC BY-NC-SA material requires prior permission from the author. `LICENSE-docs` holds the full legal code.
 
 ## Blog series (Spanish)
 
@@ -143,4 +143,4 @@ Con un agente de IA trabajando bajo `AGENTS.md`: el agente hizo el trabajo pesad
 
 - `tools/` y todo otro código: MIT ([`LICENSE`](LICENSE)).
 - `AGENTS.md`, `docs/`, `reference/`, `examples/` y este README: CC BY-NC-SA 4.0 ([`LICENSE-docs`](LICENSE-docs)).
-- El uso comercial del material CC BY-NC-SA requiere permiso previo del autor.
+- Copyright © 2026 Pablo G. (PeGa!). El uso comercial del material CC BY-NC-SA requiere permiso previo del autor. `LICENSE-docs` contiene el texto legal completo.
