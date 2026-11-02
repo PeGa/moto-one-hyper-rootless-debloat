@@ -1,0 +1,23 @@
+# Working data produced by the tools: device state, never commit
+debloat-log/
+!/examples/debloat-log/
+snapshots/
+device.txt
+*.jsonl
+!examples/**/*.jsonl
+
+# Firewall/blocklist exports and builds: reveal app inventories and network setup
+netguard/
+rethink/
+*.rbk
+hosts/src/
+hosts_merged.txt
+
+# Binaries and captures
+*.apk
+screens/
+*.png
+
+# Editors
+.vscode/
+*.swp
