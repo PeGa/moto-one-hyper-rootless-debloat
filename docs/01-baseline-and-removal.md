@@ -49,7 +49,7 @@ Refusals seen on this build:
 | `Failure: package is non-disable` | refused | refused | `com.amazon.appmanager` (factory-disabled), `com.motorola.launcherconfig` |
 | `Failure: package is protected` / `SecurityException: Cannot disable a protected package` | refused | refused | `com.motorola.ccc.ota`, `com.motorola.paks`, `com.google.android.apps.work.oobconfig` |
 
-Protected packages end on the last rung: background execution `ignore`, bucket restricted, mobile background data blocked. `com.motorola.ccc.ota` then crashes once per boot (`IllegalStateException: Not allowed to start service`, from its boot receiver); contained, no respawn.
+Protected packages end on the last rung (doc 02 levers). For `com.motorola.ccc.ota`: background execution `ignore` and removal from the system deviceidle allowlist (its standby bucket stays 5, exempt). Its boot receiver then crashes once per boot (`IllegalStateException: Not allowed to start service`); contained, no respawn.
 
 ## Batch order used
 

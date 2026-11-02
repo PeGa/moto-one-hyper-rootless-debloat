@@ -16,7 +16,7 @@ Companion technical reference for the blog series *Me divorcié de Google* ([Spa
 
 1. **Baseline before the first change:** per-user package state (present, uninstalled-for-user, disabled, suspended), role holders, `dumpsys package`. Every removed/disabled/suspended list is computed against it under `LC_ALL=C`.
 2. **Logged changes:** every state-changing command runs through a wrapper that records the command, its output, the inverse, and the state read back from the device: `actions.jsonl` for package state, `permissions.jsonl` for runtime permissions, appops, standby buckets, netpolicy and deviceidle.
-3. **Removal ladder:** `pm uninstall -k --user 0`, then `pm disable-user --user 0` if the uninstall is refused, then appops / standby bucket / netpolicy restriction if both are refused. `pm hide` is never used.
+3. **Removal ladder:** `pm uninstall -k --user 0`, then `pm disable-user --user 0` if the uninstall is refused, then appops / standby bucket / netpolicy restriction if both are refused. `pm hide` was not used (AGENTS §1.3).
 4. **Small batches.** After each one: framework reboot (`svc power reboot`), drift check (log vs. device), crash check (`dumpsys dropbox`, one tag per call), load check.
 5. **The device wins.** When log and device disagree, the device state is recorded and the discrepancy investigated.
 
@@ -49,7 +49,7 @@ Read [`AGENTS.md`](AGENTS.md) first; to run the process with an AI agent, place 
 | `tools/` | Session helpers, policy re-application, hosts merge, NetGuard → RethinkDNS rule translation, jank/launch bench, uiautomator helpers. |
 | `docs/` | Baseline and removal; background restrictions and network filtering; Android Auto and log-less forensics; log format; `[observed]` index. |
 | `reference/` | XT2027-1 `RPFS31.Q1-21-20-10` package data: 329 stock packages at baseline, 23 factory-disabled, 123 removed. Technical data, not a recipe. |
-| `examples/` | Empty log skeleton with synthetic entries. |
+| `examples/` | Working-directory skeleton with synthetic log entries. |
 
 ## How it was built
 
@@ -96,7 +96,7 @@ Referencia técnica de la serie *Me divorcié de Google*. Sólo referencia: sin 
 
 1. **Baseline antes del primer cambio:** estado de paquetes por usuario (presentes, desinstalados para el usuario, deshabilitados, suspendidos), titulares de roles, `dumpsys package`. Toda lista de removidos/deshabilitados/suspendidos se calcula contra el baseline, con `LC_ALL=C`.
 2. **Cambios registrados:** todo comando que cambia estado pasa por un wrapper que registra el comando, su salida, el inverso y el estado leído del dispositivo: `actions.jsonl` para estado de paquetes, `permissions.jsonl` para permisos runtime, appops, standby buckets, netpolicy y deviceidle.
-3. **Escalera de remoción:** `pm uninstall -k --user 0`; `pm disable-user --user 0` si el uninstall es rechazado; restricción por appops / standby bucket / netpolicy si ambos son rechazados. `pm hide` no se usa nunca.
+3. **Escalera de remoción:** `pm uninstall -k --user 0`; `pm disable-user --user 0` si el uninstall es rechazado; restricción por appops / standby bucket / netpolicy si ambos son rechazados. `pm hide` no se usó (AGENTS §1.3).
 4. **Tandas chicas.** Después de cada una: reinicio por framework (`svc power reboot`), chequeo de drift (log vs. dispositivo), chequeo de crashes (`dumpsys dropbox`, un tag por llamada), chequeo de carga.
 5. **El dispositivo manda.** Si log y dispositivo no coinciden, se registra el estado del dispositivo y se investiga la diferencia.
 
@@ -127,7 +127,7 @@ Leé [`AGENTS.md`](AGENTS.md) primero; para correr el proceso con un agente de I
 - `tools/`: helpers de sesión, re-aplicación de políticas, merge de hosts, traducción de reglas NetGuard → RethinkDNS, bench de jank/lanzamiento, helpers de uiautomator.
 - `docs/`: baseline y remoción; restricciones de segundo plano y filtrado de red; Android Auto y forense sin logs; formato de logs; índice `[observed]`.
 - `reference/`: datos de paquetes de XT2027-1 `RPFS31.Q1-21-20-10`: 329 de stock en el baseline, 23 deshabilitados de fábrica, 123 removidos. Datos técnicos, no una receta.
-- `examples/`: esqueleto de logs vacío con entradas sintéticas.
+- `examples/`: esqueleto del directorio de trabajo con entradas de log sintéticas.
 
 ### Cómo se hizo
 
